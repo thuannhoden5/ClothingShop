@@ -1,0 +1,33 @@
+.menu-item {
+  flex: 1 1 25%;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  margin: 10px;
+  overflow: hidden;
+  background-size: cover;
+  background-position-y: -50px;
+
+  .content {
+    margin: 20px;
+    border: 1px solid black;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    opacity: 0.7;
+    transition: transform 1s linear;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+    .subtitle {
+      margin-bottom: 5px;
+    }
+  }
+}
