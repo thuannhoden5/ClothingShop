@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .header-title {
+    font-size: 36px;
+    color: #46a09b;
+    margin-left: 40px;
+  }
+
+  .options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 40px;
+
+    .option {
+      padding-left: 30px;
+      color: #46a09b;
+    }
+  }
+}
