@@ -1,12 +1,18 @@
 import React from "react";
 import "./header.styles.scss";
 import { Link } from "react-router-dom";
+import { auth } from "../../firebase/firebase.utils";
 
-const Header = () => {
+const Header = ({ currentUser }) => {
+  console.log(currentUser);
   return (
     <div className="header">
-      <Link to="/">
-        <h1 className="header-title">SHOP</h1>
+      <Link className="logo-container" to="/">
+        <h1 className="header-title">Pac1Thing</h1>
+        <img
+          src="https://image.flaticon.com/icons/png/32/459/459464.png"
+          alt=""
+        />
       </Link>
       <div className="options">
         <Link className="option" to="/shop">
@@ -15,6 +21,15 @@ const Header = () => {
         <Link className="option" to="/shop">
           CONTACT
         </Link>
+        {currentUser ? (
+          <Link className="option" onClick={() => auth.signOut()}>
+            LOG OUT
+          </Link>
+        ) : (
+          <Link className="option" to="/signin">
+            SIGN IN
+          </Link>
+        )}
       </div>
     </div>
   );

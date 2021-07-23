@@ -1,11 +1,31 @@
 .header {
+  margin-top: 0;
+  padding-top: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
   .header-title {
     font-size: 36px;
     color: #46a09b;
     margin-left: 40px;
+    height: 50px;
+  }
+  .logo-container {
+    padding-top: 0;
+    margin-top: 0;
+    display: flex;
+    height: 50px;
+    margin-bottom: 50px;
+
+    flex-direction: row;
+    & img {
+      text-align: center;
+      padding-top: 20px;
+      padding-left: 20px;
+      height: 50px;
+      background-size: cover;
+    }
   }
 
   .options {
@@ -13,8 +33,10 @@
     justify-content: center;
     align-items: center;
     padding-right: 40px;
+    text-align: center;
 
     .option {
+      padding-top: 40px;
       padding-left: 30px;
       color: #46a09b;
     }

@@ -1,0 +1,19 @@
+.group {
+  display: flex;
+  margin-top: 20px;
+
+  & label {
+    color: red;
+    font-size: 20px;
+    width: 20%;
+    margin-right: 30px;
+  }
+  .form-input {
+    height: 35px;
+    width: 320px;
+    border: none;
+    border-bottom: 1px solid green;
+    outline: none;
+    background: none;
+  }
+}

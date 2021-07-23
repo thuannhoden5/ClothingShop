@@ -3,6 +3,9 @@ import HomePage from "./pages/homepage/homepage.component";
 import { Link, Route, Switch } from "react-router-dom";
 import ShopPage from "./pages/shop/shop.component";
 import Header from "../src/component/header/header.component";
+import SignInAndSignUp from "./sign-in-and-sign-up/sign-in-and-sign-up.component";
+import React from "react";
+import { auth } from "./firebase/firebase.utils";
 // const HomePage = (props) => {
 //   console.log(props);
 //   return (
@@ -29,18 +32,37 @@ import Header from "../src/component/header/header.component";
 //   return <h1>Topic details</h1>;
 // };
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/shop" component={ShopPage} />
-        {/* <Route exact path="/topics" component={TopicList} />
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      currentUser: null,
+    };
+  }
+  unsubscribeFromAuth = null;
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      this.setState({ currentUser: user });
+      console.log(user);
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Header currentUser={this.state.currentUser} />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/shop" component={ShopPage} />
+          <Route exact path="/signin" component={SignInAndSignUp} />
+          {/* <Route exact path="/topics" component={TopicList} />
         <Route path="/topics/:topicId" component={TopicDetail} /> */}
-      </Switch>
-    </div>
-  );
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;
