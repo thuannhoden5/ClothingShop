@@ -8,6 +8,6 @@ export const addItemTocart = (cartItems, cartItemToAdd) => {
         ? { ...cartItem, quantity: cartItem.quantity + 1 }
         : cartItem
     );
-  }
+  }  
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };

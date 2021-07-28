@@ -37,24 +37,28 @@ import { setCurrentUser } from "./redux/user/user.actions";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
+
   componentDidMount() {
     const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot((snapshot) => {
+
+        userRef.onSnapshot((snapShot) => {
           setCurrentUser({
-            id: snapshot.id,
-            ...snapshot.data(),
+            id: snapShot.id,
+            ...snapShot.data(),
           });
         });
       }
-      setCurrentUser({ currentUser: userAuth });
+
+      setCurrentUser(userAuth);
     });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
   }
 
   render() {
@@ -63,7 +67,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/shop" component={ShopPage} />
+          <Route path="/shop" component={ShopPage} />
           <Route
             exact
             path="/signin"
@@ -71,8 +75,6 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/" /> : <SignInAndSignUp />
             }
           />
-          {/* <Route exact path="/topics" component={TopicList} />
-        <Route path="/topics/:topicId" component={TopicDetail} /> */}
         </Switch>
       </div>
     );

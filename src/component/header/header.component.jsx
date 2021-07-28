@@ -8,6 +8,7 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 const Header = ({ currentUser, hidden }) => {
   // console.log(currentUser);
+
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -24,6 +25,7 @@ const Header = ({ currentUser, hidden }) => {
         <Link className="option" to="/shop">
           CONTACT
         </Link>
+
         {currentUser ? (
           <div className="option" onClick={() => auth.signOut()}>
             SIGN OUT
@@ -40,8 +42,9 @@ const Header = ({ currentUser, hidden }) => {
   );
 };
 
-const mapStateTopProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
   currentUser,
   hidden,
 });
-export default connect(mapStateTopProps)(Header);
+
+export default connect(mapStateToProps)(Header);
