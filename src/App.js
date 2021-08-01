@@ -7,7 +7,7 @@ import Header from "../src/component/header/header.component";
 import SignInAndSignUp from "./sign-in-and-sign-up/sign-in-and-sign-up.component";
 import React from "react";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-import SHOP_DATA from "./pages/shop/shop.data";
+import SHOP_DATA from "./redux/shop/shop.data";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";

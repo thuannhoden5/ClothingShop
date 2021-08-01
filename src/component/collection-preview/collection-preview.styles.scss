@@ -1,12 +1,15 @@
-.preview {
-  width: 100%;
+.collection-preview {
   display: flex;
-  justify-content: space-evenly;
-}
-.title {
-  margin-left: 40px;
-  font-size: 25px;
-  font-family: "Ubuntu", sans-serif;
-  color: #45b8ac;
-  text-decoration: underline wavy 2px red;
+  flex-direction: column;
+  margin-bottom: 30px;
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .preview {
+    display: flex;
+    justify-content: space-between;
+  }
 }
